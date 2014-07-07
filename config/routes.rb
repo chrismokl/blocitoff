@@ -1,7 +1,9 @@
 Blocitoff::Application.routes.draw do
   get "items/index"
-  get "welcome/index"
+  get '/items' => 'items#index'
   devise_for :users
 
-  get '/items' => 'items#index'
+  
+
+  root to: "welcome#index"
 end
