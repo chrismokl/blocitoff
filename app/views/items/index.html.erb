@@ -1,5 +1,16 @@
-<h1>Your To-Do List</h1>
-<% @items.each do |item| %>
-  <p> <%= item.title %></p>
-<% end %>
-
+<div class="container">
+  <h1>Your To-Do List</h1><span class="glyphicon glyphicon-th-list"></span>
+  <table class="table table-bordered table-hover table-condensed">
+    <% @items.each do |item| %>
+      <tr> 
+        <td><%= item.title %></td>
+        <td><%= time_ago_in_words(item.created_at) %> ago</td>
+        <td><%= link_to 'Delete Item', item_path(item), method: :delete %> ago</td>
+      </tr>
+    <% end %>
+  </table>
+  <span class="glyphicon glyphicon-plus"></span>
+  <%= form_for Item.new do |f| %>
+    <%= f.text_field :title, placeholder: 'Add New To-Do Item' %>
+  <% end %>
+</div>
