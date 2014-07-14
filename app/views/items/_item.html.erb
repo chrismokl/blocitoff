@@ -1,0 +1,7 @@
+<tr> 
+  <td><%= item.title %></td>
+  <td><%= time_ago_in_words(item.created_at) %> ago</td>
+  <% if policy(Item.new).destroy? %>
+    <td><%= link_to 'Mark as Complete', item_path(item), method: :delete %></td>
+  <% end %>
+</tr>

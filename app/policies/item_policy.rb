@@ -1,5 +1,5 @@
 class ItemPolicy < ApplicationPolicy
   def index?
-    true
+    user.present? && user.role == "admin"
   end
 end

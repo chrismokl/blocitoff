@@ -1,0 +1,5 @@
+<%= form_for item do |f| %>
+   <%= f.text_field :title, placeholder: 'Add New To-Do Item' %>
+   <%= f.submit "Create", class: 'btn btn-success' %>
+   <span class="glyphicon glyphicon-plus"></span>
+<% end %>
