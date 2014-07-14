@@ -4,10 +4,11 @@ class ItemsController < ApplicationController
     @items = Item.where("created_at > ?", Time.now - 7.days)
   end
 
-
   # params = {item: {title: 'whatever'}}
   def create
     @new_item = Item.new(params.require(:item).permit(:title))
+    @new_item.user = current_user
+    authorize @new_item
     @new_item.save
     redirect_to items_path
   end

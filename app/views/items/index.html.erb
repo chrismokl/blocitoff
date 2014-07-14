@@ -5,12 +5,15 @@
       <tr> 
         <td><%= item.title %></td>
         <td><%= time_ago_in_words(item.created_at) %> ago</td>
-        <td><%= link_to 'Delete Item', item_path(item), method: :delete %> ago</td>
+        <td><%= link_to 'Mark as Complete', item_path(item), method: :delete %></td>
       </tr>
     <% end %>
   </table>
-  <span class="glyphicon glyphicon-plus"></span>
-  <%= form_for Item.new do |f| %>
-    <%= f.text_field :title, placeholder: 'Add New To-Do Item' %>
+  <% if policy(Item.new).create? %>
+    <%= form_for Item.new do |f| %>
+       <%= f.text_field :title, placeholder: 'Add New To-Do Item' %>
+       <%= f.submit "Create", class: 'btn btn-success' %>
+       <span class="glyphicon glyphicon-plus"></span>
+    <% end %>
   <% end %>
 </div>

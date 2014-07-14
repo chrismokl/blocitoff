@@ -7,8 +7,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="container">
+    <ul class="nav nav-tabs">
+      <li><%= link_to "Blocitoff", root_path %></li>
+      <li><%= link_to "About", about_path %></li>
+      
+        <% if current_user %>
+          <li>
+            Hello <%= current_user.name || current_user.email %>!
+          </li>
+        <% else %>
+            <li><%= link_to "Sign in", new_user_session_path %> </li>
+            <li><%= link_to "Sign up", new_user_registration_path %> </li>
+        <% end %>
+     
 
-<%= yield %>
+    </ul>
 
+
+    <%= flash[:notice] %>
+    <%= flash[:alert] %>
+    <%= yield %>
+  </div>
 </body>
 </html>

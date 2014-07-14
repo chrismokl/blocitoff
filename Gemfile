@@ -51,3 +51,6 @@ end
 
 # Devise
 gem 'devise'
+
+# Pundit 
+gem 'pundit'
