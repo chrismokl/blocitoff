@@ -24,4 +24,21 @@ class ItemsController < ApplicationController
     redirect_to current_user
   end
 
+  def update
+    @item = Item.find(params[:id])
+    authorize @item
+    @item.update_attributes(params.require(:item).permit(:title, :completed))
+    redirect_to current_user
+  end
+
 end
+
+
+
+
+# link_to "Mark as Completed", item_path(item, item: {completed: true}), method: :put
+
+# PUT /items/123?item[completed]=true
+
+
+# PUT /items/:id          items#update

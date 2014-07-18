@@ -5,7 +5,8 @@ Blocitoff::Application.routes.draw do
   get    '/items' => 'items#index'
   post   '/items' => 'items#create'
   delete '/items/:id' => 'items#destroy', as: 'item'
-  # resources :items, only: [:index, :create, :destroy]
+  put    '/items/:id' => 'items#update'
+  # resources :items, only: [:index, :create, :destroy, :update]
   resources :users, only: [:show, :index, :update]
 
   get 'about' => 'welcome#about'  

@@ -1,12 +1,14 @@
-<div class="container"> 
+
   <div class='jumbotron'> 
-    <h1>Blocitoff:</h1>
+    <h1>Blocitoff: <span class="glyphicon glyphicon-ok"></span></h1>
     <p class='bs-docs-booticon bs-docs-booticon-lg bs-docs-booticon-outline'>A self-destructing to-do list to keep you focused on the things that really matter.</p>
+  
+
+    <% if current_user %>
+      <%= link_to 'See My List', current_user, class: "btn btn-see-list"%>
+    <% else %>
+      <%= link_to "Sign in", new_user_session_path, class: "btn btn-intro" %>
+      <%= link_to "Sign up", new_user_registration_path, class: "btn btn-intro" %> 
+    <% end %>
   </div>
-  <% if current_user %>
-    <%= link_to 'See My List', current_user, class: "btn btn-success"%>
-  <% else %>
-    <%= link_to "Sign in", new_user_session_path, class: "btn btn-danger" %>
-    <%= link_to "Sign up", new_user_registration_path, class: "btn btn-danger" %> 
-  <% end %>
-</div>
+
