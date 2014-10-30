@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :list
 
   validates :title, length: { minimum: 1 }, presence: true
 

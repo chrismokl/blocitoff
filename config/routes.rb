@@ -12,4 +12,18 @@ Blocitoff::Application.routes.draw do
   get 'about' => 'welcome#about'  
 
   root to: "welcome#index"
+
+  namespace :api do
+    namespace :v1 do
+      resources :users, only: [] do
+        resources :lists, only: [:index, :create]
+      end
+      resources :lists, only: [] do
+        resources :items, only: [:index, :create]
+      end
+    end
+  end
 end
+
+
+# /api/v1/users/:user_id/lists

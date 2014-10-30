@@ -11,11 +11,9 @@
       <th></th>
       <th>Completed?</th>
     </tr>
-    <%= render @items %>
   </table>
 
     <% if policy(Item.new).create? %>
         <%= render partial: 'items/form', locals: {item: Item.new} %>
     <% end %>
 </div>
-

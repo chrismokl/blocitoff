@@ -54,3 +54,5 @@ gem 'devise'
 
 # Pundit 
 gem 'pundit'
+
+gem 'rspec-rails'
