@@ -2,24 +2,18 @@ require 'rails_helper'
 
 describe Api::V1::ItemsController, type: :controller do
   describe "get index" do
-
-    before {
-      @user = User.create(email: 'a@a.com', password: '12345678')
-      @list = @user.lists.create(title: 'Title')
-      @item = @list.items.create(title: 'item title')
-    }
-
-    # subject { get :index, list_id: @list.id }
+    let(:user) { User.create!(email: 'a@a.com', password: '12345678') }
+    let(:list) { user.lists.create!(title: 'Title') }
+    before { list.items.create!(title: 'item title') }
+    
+    before { get :index, list_id: list.id }
 
     it 'respond with success' do
-      raise @list.items.inspect
-      get :index, list_id: @list.id
       expect(response).to be_success
     end
 
     it "returns a list of a lists items" do
-      get :index, list_id: @list.id
-      expect(JSON.parse(response.body).first['title']).to eq(@list.items.first.title)
+      expect(JSON.parse(response.body).first['title']).to eq(list.items.first.title)
     end
   end
 

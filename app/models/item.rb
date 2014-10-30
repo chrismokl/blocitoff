@@ -7,5 +7,6 @@ class Item < ActiveRecord::Base
   
   def set_uncompleted
     self.completed ||= false
+    nil
   end
 end
