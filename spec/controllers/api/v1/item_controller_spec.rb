@@ -4,15 +4,14 @@ describe Api::V1::ItemsController, type: :controller do
   describe "get index" do
 
     before {
-      @user = User.create(email: 'a@a.com', password: '12345678')
-      @list = @user.lists.create(title: 'Title')
-      @item = @list.items.create(title: 'item title')
+      @user = User.create!(email: 'a@a.com', password: '12345678')
+      @list = @user.lists.create!(title: 'Title')
+      @item = @list.items.create!(title: 'item title')
     }
 
     # subject { get :index, list_id: @list.id }
 
     it 'respond with success' do
-      raise @list.items.inspect
       get :index, list_id: @list.id
       expect(response).to be_success
     end
